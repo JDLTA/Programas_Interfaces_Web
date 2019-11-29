@@ -1,0 +1,75 @@
+<!-- 
+Nombre Materia:     Interfaces Web
+Nombre Alumno:      JOSE DE LA TORRE ARELLANO
+Numero Control:     S15070125
+Nombre Profesor:    Cesar Landeros Soriano
+Nombre Carrera      Ingenieria En Sistemas Computacionales
+Semestre:           9
+-->
+<!DOCTYPE html>
+
+<html lang="es-mx">
+
+<head>
+    <title>D3</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var w = 800;
+        var h = 400;
+        var padding = 4;
+        
+        var datos=[];
+        for(var i=0; i<40; i++){
+            var numero = Math.random()*50;
+            datos = datos.concat(numero);
+        };
+        
+        var svg = d3.select("body")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+        
+        svg.selectAll("rect")
+            .data(datos)
+            .enter()
+            .append("rect")
+            .attr("x", function(d,i){
+                return i*(w / datos.length);
+            })
+            .attr("y", function(d){
+                return h - (d*4);
+            })
+            .attr("width", w/datos.length - padding)
+            .attr("height", function(d){
+                    return d*4;
+            })
+            .attr("fill", function(d){
+                return "rgb(0,0, " + (d*5)+")";
+            });
+        
+        svg.selectAll("text")
+            .data(datos)
+            .enter()
+            .append("text")
+            .text(function(d){
+                return d;
+            })
+            .attr("text-anchor", "middle")
+            .attr("x", function(d,i){
+                return i * (w/datos.length) + (w/datos.length - padding)/2;
+            })
+            .attr("y", function(d){
+                return h - (d*4)-4;
+            })
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "11px")
+            .attr("fill", "black");
+    </script>
+</body>
+    
+
+</html>

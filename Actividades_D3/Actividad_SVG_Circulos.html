@@ -1,0 +1,48 @@
+<!-- 
+Nombre Materia:		Interfaces Web
+Nombre Alumno: 		JOSE DE LA TORRE ARELLANO
+Numero Control:		S15070125
+Nombre Profesor:	Cesar Landeros Soriano
+Nombre Carrera 		Ingenieria En Sistemas Computacionales
+Semestre:			9
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>D3</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+	
+</head>
+<body>
+	<script type="text/javascript">
+		//Alura Ancho
+		var ancho=1000;
+		var alto=300;
+
+		//Datos
+		var datos =[5,10,15,20,25];
+		//creando los elemntos SVG
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("width", ancho)
+					.attr("height", alto);
+
+		var circulos= svg.selectAll("circle")
+						 . data(datos)
+						 .enter()
+						 .append("circle");
+
+		circulos.attr("cx", function(d,i){
+			return (i*50)+25;
+		})
+		.attr("cy",alto/2)
+		.attr("r", function(d){
+			return (d);
+		})
+		.attr("fill","navy");	
+
+	</script>
+</body>
+
+</html>

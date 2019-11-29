@@ -1,0 +1,44 @@
+<!-- 
+Nombre Materia:		Interfaces Web
+Nombre Alumno: 		JOSE DE LA TORRE ARELLANO
+Numero Control:		S15070125
+Nombre Profesor:	Cesar Landeros Soriano
+Nombre Carrera 		Ingenieria En Sistemas Computacionales
+Semestre:			9
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D3</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+	<style type="text/css">
+		div.bar{
+			display: inline-block;
+			width: 20px;
+			height: 75px;
+			background-color: teal;
+			margin-right: 3px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var arreglo=[];
+		for (var i =0; i <40;  i++) {
+			//var numero=Math.random()*50;
+			arreglo=arreglo.concat(Math.random()*50);
+		}
+		d3.select("body").selectAll("div")
+		.data(arreglo)
+		.enter()
+		.append("div")
+		.attr("class","bar")
+		.style("height", function (d) {
+			var altura=d*5;
+			return altura +"px";
+		});
+	</script>
+</body>
+
+</html>
